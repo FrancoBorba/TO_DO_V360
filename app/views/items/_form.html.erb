@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :nome %>
+    <%= form.label :nome , "Adicione uma tarefa:" %>
     <%= form.text_field :nome, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": item.errors[:nome].none?, "border-red-400 focus:outline-red-600": item.errors[:nome].any?}] %>
   </div>
 
