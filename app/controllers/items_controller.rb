@@ -36,8 +36,8 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @list, notice: "Item was successfully created." }
-        format.json { render :show, status: :created, location: @item }
+      #ao ser criado um item eh chamado este turbo_stream (ir para a classe dele para ver sua funcao)
+      format.turbo_stream { }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }

@@ -1,0 +1,7 @@
+
+
+<!--
+Ele injeta (append) o novo item no elemento da página que tem o id "todo-items", renderizando o partial _item.html.erb com o item recém-criado.
+Ou seja, ao criar um item, ele sera automaticamente adicionado a lista na tela sem reload.
+-->
+<%= turbo_stream.append("todo-items" , partial: "lists/item" , locals: {item: @item})%>

@@ -8,6 +8,13 @@
 
   <h1 class="font-bold text-5xl" ><%= @list.nome %></h1>
 
+  <!--Coloca os items dentro de uma div que sera alvo do turbo-stream-->
+  <div id="todo-items">
+  <% @list.items.each do |item| %>
+    <%= render "item", item: item %>    <!--Renderiza o arquivo item -->
+  <% end %>
+  </div>
+  
   <!-- Esse eh um Turbo Frame, que permite atualizar so uma parte da pagina sem recarrega-la inteira
   :new_item eh o ID do Turbo Frame.
   src: new_list_item_path(@list) diz: carregue o conteudo desse frame via requisicao GET para essa URL, que no caso eh o formulario new.
