@@ -87,7 +87,7 @@ class ItemsController < ApplicationController
     def item_params
     #Garante segurança no recebimento dos dados
 
-    #So permite os atributos(nome, concluido, list_id)
-      params.require(:item).permit(:nome, :concluido, :list_id)
+    #So permite mudar os atributos(nome, concluido)
+      params.require(:item).permit(:nome, :concluido)
     end
 end
