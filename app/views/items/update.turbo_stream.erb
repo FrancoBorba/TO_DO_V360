@@ -1,7 +1,7 @@
 <!-- Substitui o elemento html com o dom_id(item) , renderizando a partial ou seja
 renderizando item de novo quando sofre update e substitui o html antigo pelo novo sem
 renderizar a pagina
-<%= turbo_stream.replace(dom_id(@item), partial: "lists/item", locals: {item: @item})%>
+
 Foi trocado pois so renderizava o item e agora renderiza toda a lista de novo para ordenar
 -->
 <%= turbo_stream.replace("todo-items") do %>
@@ -11,4 +11,3 @@ Foi trocado pois so renderizava o item e agora renderiza toda a lista de novo pa
     <% end %>
   <% end %>
 <% end %>
-

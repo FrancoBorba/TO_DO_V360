@@ -28,11 +28,17 @@ class ItemsController < ApplicationController
   #O item já foi carregado com set_item
   
   def edit
+  #O metodo edit nao altera nada no banco apenas prepara a tela para que o usuario possa editar.
   end
 
   # POST /lists/:list_id/items
   def create
     @item = @list.items.new(item_params)
+
+  
+    if @item.nome.blank? 
+   
+    end
 
     respond_to do |format|
       if @item.save
@@ -63,8 +69,8 @@ class ItemsController < ApplicationController
     @item.destroy!
 
     respond_to do |format|
-      format.html { redirect_to items_path, status: :see_other, notice: "Item was successfully destroyed." }
-      format.json { head :no_content }
+    format.turbo_stream #chama o turbo stream de remover
+     format.html { redirect_to list_path(@item.list), notice: "Item removido." }
     end
   end
 

@@ -1,0 +1,4 @@
+<!-- Apenas recria toda a lista de novo , porem como esse metodo esta sendo chamado
+dentro do destroy vai criar a lista sem o item removido
+-->
+<%= turbo_stream.remove dom_id(@item) %>
