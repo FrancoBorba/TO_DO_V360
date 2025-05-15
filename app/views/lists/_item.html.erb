@@ -1,6 +1,7 @@
 <!-- Para evitar duplicacao de codigo ja que vai ser chamado para renderizar os itens 
 ja criados e os itens que estao sendo criados
 -->
-<div class="p-2 rounded-lg bg-blue-100 text-blue-800 font-semibold text-lg">
-  <%= item.nome %>
+<div class="p-3 rounded-lg bg-[#2E1463] text-[#FF490D] mt-3  flex justify-between items-center">
+  <%= item.nome  %>
+  <%= check_box_tag "Feito", "1" ,item.concluido , class: " w-7 h-5 accent-[#E2E639]" %>
 </div>
