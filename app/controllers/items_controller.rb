@@ -50,8 +50,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
     # Atualiza um item com os novos dados do formulario
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: "Item was successfully updated." }
-        format.json { render :show, status: :ok, location: @item }
+       format.turbo_stream {}
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }
