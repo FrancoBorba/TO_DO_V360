@@ -1,11 +1,21 @@
 
-
 <!--
-Ele injeta (append) o novo item no elemento da pagina que tem o id "todo-items", renderizando o partial _item.html.erb com o item recem criado.
-Ou seja, ao criar um item, ele sera automaticamente adicionado a lista na tela sem reload.
--->
-<%= turbo_stream.append("todo-items" , partial: "lists/item" , locals: {item: @item})%>
+<%= turbo_stream.prepend("todo-items" , partial: "lists/item" , locals: {item: @item})%>
+Essa linha adicionava no inicio da div que contem os items mas troquei para a atual por motivo lofio apenas
+ja que ao adicionar no inicio as marcadas como concluidas continuariam no final 
 
+O metodo atual renderiza toda a lista atual de novo porem os items ficam sempre em ordem
+de insercao , preferi dessa maneira ja que normalmente colocamos os itens de maior prioridade
+primeiro entao consequentemente eles ficam no topo
+-->
+
+<%= turbo_stream.replace("todo-items") do %>
+  <%= turbo_frame_tag "todo-items" do %>
+    <% @item.list.items.order(:concluido, :created_at).each do |item| %>
+      <%= render "lists/item", item: item %>
+    <% end %>
+  <% end %>
+<% end %>
 
 
 <!--

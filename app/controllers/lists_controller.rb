@@ -7,8 +7,16 @@ class ListsController < ApplicationController
   end
 
   # GET /lists/1 or /lists/1.json
+
   def show
+    @list  = List.find(params[:id])
+    # Carrega todos os itens, ordenando:
+    #  primeiro pelos nao concluidos (concluido: false vem antes de true)
+    #   depois pela data de criacao 
+    @items = @list.items.order(:concluido, :created_at)
   end
+
+
 
   # GET /lists/new
   def new

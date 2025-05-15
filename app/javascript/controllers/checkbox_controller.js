@@ -6,16 +6,15 @@ export default class extends Controller {
 
   static values = {url : String}
 
- async update(e) {
+ async update(e) { // recebe o evento change
     let checkbox = e.target
-    let verificada = checkbox.checked
+    let verificada = checkbox.checked // verifica se esta marcada
     console.log("Atualizando checkbox", verificada)
-    await put(this.urlValue , {
-        body: {
+    await put(this.urlValue , { // usa a funcao put do @rails/request.js
+       body: {
           concluido: verificada
-        }
-
-
+        },
+        responseKind: "turbo-stream"
     })
   }
 }

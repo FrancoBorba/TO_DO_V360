@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
     # Atualiza um item com os novos dados do formulario
       if @item.update(item_params)
-       format.turbo_stream {}
+       format.turbo_stream 
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }

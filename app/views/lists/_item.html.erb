@@ -1,12 +1,15 @@
 <!-- Para evitar duplicacao de codigo ja que vai ser chamado para renderizar os itens 
 ja criados e os itens que estao sendo criados
 -->
-<div class="p-3 rounded-lg bg-[#2E1463] text-[#FF490D] mt-3  flex justify-between items-center"
- id="<%=dom_id(item)%>">
-  <%= item.nome  %>
+<div class="p-3 rounded-lg bg-[#2E1463] text-[#FF490D] mt-3 
+ flex justify-between items-center <%= 'line-through opacity-50' if item.concluido %>"
+ id="<%=dom_id(item)%>" >
+ <span>  <%= item.nome  %></span>
   <%= check_box_tag "concluido", "1" ,item.concluido , class: " w-7 h-5 accent-[#E2E639]",
       data: { controller: "checkbox" , action: "change->checkbox#update" , 
       checkbox_url_value: url_for([item.list , item])}
-  
+    #Chama o controle o controller checkox do javaScript quando o usuario marcar
+    # ou desmarcar o checkbox chama a funcao update pela rota gerada 
    %>
 </div>
+
