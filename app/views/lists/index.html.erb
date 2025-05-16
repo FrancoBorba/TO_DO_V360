@@ -1,29 +1,49 @@
 <% content_for :title, "Listas" %>
 
-<div class="w-full">
+<div class="w-full" > <!--Div para toda a pagina-->
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Lists</h1>
-    <%= link_to "New list", new_list_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl">Suas listas</h1>
   </div>
 
-  <div id="list" class="min-w-full divide-y divide-gray-200 space-y-5">
-    <% if @lists.any? %>
-      <% @lists.each do |list| %>
-        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
-          <%= render list %>
-          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= link_to "Show", list, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= link_to "Edit", edit_list_path(list), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= button_to "Destroy", list, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
-          </div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px;">
+  <% @lists.each do |list| %>
+    <div class="lista-card" style="
+      width: 250px;
+      height: 350px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      background-color: white;
+      position: relative;
+    ">
+      <!-- Botoes no canto superior direito -->
+      <div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 8px;">
+        <%= link_to "✏️", edit_list_path(list), style: "border: none; background: none; font-size: 16px; cursor: pointer; text-decoration: none;" %>
+        <%= button_to "🗑", list_path(list), method: :delete, data: { confirm: "Tem certeza que deseja deletar?" }, style: "border: none; background: none; font-size: 16px; cursor: pointer; text-decoration: none;" %>
+      </div>
+
+      <!-- Link que envolve todo o conteúdo do cartão para "ver a lista" -->
+      <%= link_to list_path(list), style: "color: inherit; text-decoration: none; display: block; height: 100%;" do %>
+        <div style="font-weight: bold; font-size: 18px; margin-top: 30px;">
+          <%= list.nome %>
+        </div>
+
+        <div style="margin-top: 16px; font-size: 14px;">
+          Clique para ver os itens da lista
         </div>
       <% end %>
-    <% else %>
-      <p class="text-center my-10">No lists found.</p>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
+
+
+</div>
+
+
 </div>
