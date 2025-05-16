@@ -1,4 +1,4 @@
-<% content_for :title, "Lists" %>
+<% content_for :title, "Listas" %>
 
 <div class="w-full">
   <% if notice.present? %>
@@ -10,7 +10,7 @@
     <%= link_to "New list", new_list_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
   </div>
 
-  <div id="lists" class="min-w-full divide-y divide-gray-200 space-y-5">
+  <div id="list" class="min-w-full divide-y divide-gray-200 space-y-5">
     <% if @lists.any? %>
       <% @lists.each do |list| %>
         <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">

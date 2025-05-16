@@ -1,28 +1,37 @@
 <% content_for :title, "Showing list" %>
 
-<div class="md:w-2/3 w-full">
+<div class="md:w-2/3 w-full mx-auto px-4 py-8">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <div class="p-3 mb-6 rounded-lg bg-[#E2E639]/90 text-[#3B1D59] font-medium shadow-md" id="notice">
+      <%= notice %>
+    </div>
   <% end %>
 
+  <div class="flex items-center justify-between mb-8 border-b-2 border-[#542EA6] pb-4">
+    <h1 class="font-bold text-4xl text-[#3B1D59] drop-shadow-md"><%= @list.nome %></h1>
+    <div class="flex gap-2">
 
-  <h1 class="font-bold text-5xl" ><%= @list.nome %></h1>
+      <%= link_to "⬅", lists_path, 
+        class: "text-center px-4 py-2 rounded-lg bg-[#542EA6] text-white hover:bg-[#3B1D59] transition-colors duration-200 shadow-md" %>
 
-  <!--Coloca os items dentro de uma div que sera alvo do turbo-stream-->
-<%= turbo_frame_tag "todo-items" do %>
-  <% @items.each do |item| %>
-    <%= render "item", item: item %>
+      <%= link_to "✏️", edit_list_path(@list), 
+          class: "p-2 rounded-lg bg-[#E2E639] hover:bg-[#F25116] transition-colors duration-200 shadow-md",
+          title: "Editar lista" %>
+          
+      <%= button_to "🗑", @list, method: :delete, 
+          class: "p-2 rounded-lg bg-[#F25116] hover:bg-[#E2E639] transition-colors duration-200 shadow-md",
+          form: { data: { turbo_confirm: "Tem certeza que quer apagar esta lista?" } },
+          title: "Apagar lista" %>
+    </div>
+  </div>
+
+  <%= turbo_frame_tag "todo-items", class: "space-y-3" do %>
+    <% @items.each do |item| %>
+      <%= render "item", item: item %>
+    <% end %>
   <% end %>
-<% end %>
 
-  
-  <!-- Esse eh um Turbo Frame, que permite atualizar so uma parte da pagina sem recarrega-la inteira
-  :new_item eh o ID do Turbo Frame.
-  src: new_list_item_path(@list) diz: carregue o conteudo desse frame via requisicao GET para essa URL, que no caso eh o formulario new.
-  -->
-  <%=turbo_frame_tag :new_item , src: new_list_item_path(@list)%>
+  <%= turbo_frame_tag :new_item, src: new_list_item_path(@list), class: "mt-6" %>
 
-  <%= link_to "Edit this list", edit_list_path(@list), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to lists", lists_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= button_to "Destroy this list", @list, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+
 </div>
