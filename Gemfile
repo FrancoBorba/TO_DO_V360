@@ -70,6 +70,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "cssbundling-rails", "~> 1.4"
 
 gem 'bcrypt', '~> 3.1.7'
