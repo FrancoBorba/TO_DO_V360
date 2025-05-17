@@ -1,14 +1,15 @@
 #!/bin/bash
 set -o errexit
 
-# Carrega o ambiente Ruby
-source /opt/render/.bashrc
+# Configuração do ambiente
+export RAILS_ENV=production
+export BUNDLE_PATH=vendor/bundle
 
 # Instala dependências
-bundle install --path vendor/bundle
+bundle install
 
-# Configura o banco (podemos resetar completamente)
-bundle exec rails db:drop db:create db:migrate db:seed
+# Recria o banco e aplica TODAS as migrações
+bundle exec rails db:drop db:create db:migrate
 
 # Compila assets
 bundle exec rails assets:precompile
