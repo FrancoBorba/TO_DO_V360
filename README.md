@@ -1,48 +1,56 @@
-# ToDo List - Ruby on Rails
+# V360 - Gerenciador de Tarefas
 
-Aplicação de lista de tarefas desenvolvida como parte de um teste técnico. O objetivo é permitir que usuários criem listas personalizadas e adicionem tarefas, podendo organizá-las por dia ou por semana.
+Projeto desenvolvido como parte de um teste técnico. A aplicação permite que usuários se cadastrem, façam login e gerenciem listas de tarefas com itens associados.
 
-## 🔗 Acesse a aplicação online
-
-👉 [Link da aplicação no Railway](https://seu-projeto.railway.app)
-
-> (Atualiar o link no futuro)
-
----
-
-## 💡 Funcionalidades planejadas
-
-- [x] Criar listas personalizadas (ex: Lista de compras, tarefas semanais)
-- [x] Adicionar e remover tarefas
-- [ ] Listas podem conter outras listas (ex: Semana → Dias)
-- [ ] Editar itens de tarefas
-- [ ] Marcar tarefas como concluídas
-- [ ] Autenticação de usuários (futuramente)
-- [ ] Interface responsiva com TailwindCSS
-
-## ⚙️ Tecnologias utilizadas
+## 🚀 Tecnologias
 
 - Ruby on Rails 7
-- TailwindCSS
 - PostgreSQL
+- Devise (opcional para autenticação)
+- HTML, CSS (inline e customizado)
 
-## 🛠️ Como rodar o projeto
+## 📸 Funcionalidades
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/nome-do-repo.git
-   cd nome-do-repo
-2. Instale as dependências:
-    ```bash
-    bundle install
-    yarn install
-3. Configure o banco de dados:
-    ```bash
-   rails db:create
-   db:migrate
-4. Inicie a aplicação
-   ```bash
-   rails s
-## 📁 Organização do projeto
+- Cadastro e login de usuários
+- Criação e edição de listas de tarefas
+- Criação e gerenciamento de itens dentro das listas
+- Validação de autenticação com feedback visual
+- Interface limpa e responsiva
 
-  O projeto será dividido em milestones tarefas, gerenciadas via GitHub Projects.
+## 🧪 Testando localmente
+
+### Pré-requisitos
+
+- Ruby 3.x instalado
+- Rails 7.x instalado
+- PostgreSQL instalado e rodando
+- Git
+
+### Passos para rodar:
+
+```bash
+# Clone o projeto
+git clone https://github.com/seuusuario/v360-tarefas.git
+cd v360-tarefas
+
+# Instale as dependências
+bundle install
+
+# Crie o banco de dados e rode as migrations
+rails db:create
+rails db:migrate
+
+# Inicie o servidor
+rails server
+Acesse em: http://localhost:3000
+
+🌐 Versão Online
+Você pode testar a aplicação pela versão em nuvem no Railway (link será adicionado abaixo):
+
+🔗 Acessar Aplicação Online (link de exemplo)
+
+🧑‍💻 Desenvolvedor
+Franco Ribeiro Borba
+LinkedIn
+Estudante de Ciência da Computação - UESB
+

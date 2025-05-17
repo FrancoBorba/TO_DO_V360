@@ -26,6 +26,11 @@
   <% if action_name == "index" %> <!-- Para aperecer apenas na tela inicial , para o usuario nao baguncar-->
     <%= estiloBotao "Nova lista", new_list_path %>
   <% end %>
+    <!-- Botao para sair -->
+   <% unless controller_name == "sessions" && action_name == "new" || controller_name == "usuarios" && action_name == "new" %>
+  <%= estiloBotaoLogout "Sair", logout_path %>
+<% end %>
+
 </div>
 
   </div>

@@ -4,6 +4,8 @@ class Usuario < ApplicationRecord
   #Um usuario possui uma ou mais listas e se for deletado deleta as listas
   has_many :lists, dependent: :destroy
   
-  validates :nome, presence: true
-  validates :email, presence: true, uniqueness: true
+ 
+  validates :nome, presence: { message: "não pode ficar em branco" }
+  validates :email, presence: { message: "não pode ficar em branco" }
+  validates :password, presence: { message: "não pode ficar em branco" }
 end
