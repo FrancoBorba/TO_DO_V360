@@ -1,10 +1,12 @@
 class ListsController < ApplicationController
+  before_action :autenticar_usuario!
   before_action :set_list, only: %i[ show edit update destroy ]
 
   # GET /lists or /lists.json
-  def index
-    @lists = List.all
-  end
+  
+def index
+  @lists = usuario_logado.lists
+end
 
   # GET /lists/1 or /lists/1.json
 
@@ -29,11 +31,11 @@ class ListsController < ApplicationController
 
   # POST /lists or /lists.json
   def create
-    @list = List.new(list_params)
-
+      @list = usuario_logado.lists.build(list_params)
+      
     respond_to do |format|
       if @list.save
-        format.html { redirect_to @list, notice: "List was successfully created." }
+        format.html { redirect_to @list, notice: "Lista criada com sucesso." }
         format.json { render :show, status: :created, location: @list }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -46,7 +48,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to @list, notice: "List was successfully updated." }
+        format.html { redirect_to @list, notice: "Lista atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @list }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +62,7 @@ class ListsController < ApplicationController
     @list.destroy!
 
     respond_to do |format|
-      format.html { redirect_to lists_path, status: :see_other, notice: "List was successfully destroyed." }
+      format.html { redirect_to lists_path, status: :see_other, notice: "Lista removida com sucesso." }
       format.json { head :no_content }
     end
   end

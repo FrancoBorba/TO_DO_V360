@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
+  resources :usuarios
   # Permite criar rotas aninhadas como get/lists/1/itens 
   # ou seja listar os itens da lista de id 1
   # A alteracao deve ser feita tambem no controller
@@ -12,5 +16,10 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Define a rota principal para a de criacao de listas com
-   root "lists#index"
+   root "usuarios#index"
+
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
 end

@@ -1,0 +1,32 @@
+<%= form_with(model: usuario, class: "contents") do |form| %>
+  <% if usuario.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% usuario.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :nome %>
+    <%= form.text_field :nome, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": usuario.errors[:nome].none?, "border-red-400 focus:outline-red-600": usuario.errors[:nome].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": usuario.errors[:email].none?, "border-red-400 focus:outline-red-600": usuario.errors[:email].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :password_digest %>
+    <%= form.text_field :password_digest, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": usuario.errors[:password_digest].none?, "border-red-400 focus:outline-red-600": usuario.errors[:password_digest].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

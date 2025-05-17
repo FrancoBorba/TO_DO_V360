@@ -9,19 +9,25 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+      <!--Adicionando faviicon-->
+    <%= favicon_link_tag 'iconV360.ico' %>
   </head>
 
   <body>
-    <header class="bg-white shadow-md w-full fixed top-0 left-0 z-50">
+    <header class="bg-white shadow-md w-full fixed top-0 left-0 z-50" >
+
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
     <!-- Logo da v360 no topo -->
     <div class="flex items-center space-x-2">
-      <%= image_tag "logov360.png", alt: "Logo", class: "h-9 w-9" %>
+      <%= image_tag "logov360.png", alt: "Logo", class: "h-20 w-35" %>
     </div>
      <!-- Botao para nova lista -->
     <div>
-     <%= link_to "Nova lista", new_list_path, class: "rounded-md px-3.5 py-2.5 bg-[#2E1463] text-[#FF490D] block font-medium" %>
-    </div>
+  <% if action_name == "index" %> <!-- Para aperecer apenas na tela inicial , para o usuario nao baguncar-->
+    <%= estiloBotao "Nova lista", new_list_path %>
+  <% end %>
+</div>
+
   </div>
 
     </header>
