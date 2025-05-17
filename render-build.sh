@@ -2,4 +2,5 @@
 set -o errexit
 
 bundle install
-bundle exec rake db:migrate
+rails assets:precompile
+rails db:migrate

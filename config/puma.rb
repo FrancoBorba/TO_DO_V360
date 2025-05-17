@@ -26,3 +26,9 @@ end
 lowlevel_error_handler do |e|
   [500, {}, ["An error has occurred and the engineers have been informed. Please reload the page. If you continue to have problems, contact support.\n"]]
 end
+
+# Desativa workers apenas no Windows
+if Gem.win_platform?
+  workers 0
+  worker_timeout 3600
+end
