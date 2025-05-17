@@ -82,6 +82,7 @@ test:
 #
 production:
   <<: *default
-  database: to_do_v360_production
-  username: to_do_v360
-  password: <%= ENV["TO_DO_V360_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  url: <%= ENV['DATABASE_URL'] %>
