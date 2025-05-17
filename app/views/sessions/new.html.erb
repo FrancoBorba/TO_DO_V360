@@ -1,17 +1,45 @@
-<h2>Login</h2>
+<div style="display: flex; height: 100vh; font-family: sans-serif;">
 
-<%= form_with url: login_path, method: :post do %>
-  <div>
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+  <!-- Lado Esquerdo: Login -->
+  <div style="flex: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center; background-color: #f8f8f8;">
+    <h2 style="font-size: 28px; margin-bottom: 30px;">Login</h2>
+
+    <% if flash[:alert] %>
+      <div style="color: red; margin-bottom: 20px;"><%= flash[:alert] %></div>
+    <% end %>
+
+
+    <%= form_with(url: login_path, method: :post, local: true) do |form| %>
+      <div style="margin-bottom: 20px;">
+        <%= form.label :email, "Email" %><br>
+        <%= form.text_field :email, required: true, style: "width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc;" %>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <%= form.label :password, "Senha" %><br>
+        <%= form.password_field :password, required: true, style: "width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc;" %>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <%= form.submit "Entrar", style: "padding: 10px 20px; background-color: #2E1463; color: white; border: none; border-radius: 4px; cursor: pointer;" %>
+      </div>
+
+      <div>
+        <p>
+          Não tem uma conta?
+          <a href="<%= new_usuario_path %>" style="color: #2E1463; text-decoration: none;" onmouseover="this.style.color='#ff5c13'" onmouseout="this.style.color='#2E1463'">
+            Cadastre-se
+          </a>
+        </p>
+      </div>
+    <% end %>
   </div>
 
-  <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+  <!-- Lado Direito: V360 -->
+  <div style="flex: 1; background-color: #2E1463; color: white; display: flex; justify-content: flex-end; align-items: center;">
+    <div style="margin-right: 80px; text-align: right;">
+      <h1 style="font-size: 48px; margin-bottom: 20px;">V360</h1>
+      <p style="font-size: 18px; max-width: 320px;">Sua plataforma para organização completa de tarefas, simples e eficiente.</p>
+    </div>
   </div>
-
-  <div>
-    <%= submit_tag "Entrar" %>
-  </div>
-<% end %>
+</div>

@@ -5,6 +5,7 @@ class ListsController < ApplicationController
   # GET /lists or /lists.json
   
 def index
+  @usuario = Usuario.find(session[:usuario_id]) #armazena o usuario da list
   @lists = usuario_logado.lists
 end
 

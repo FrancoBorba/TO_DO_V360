@@ -20,19 +20,21 @@ class UsuariosController < ApplicationController
   end
 
   # POST /usuarios or /usuarios.json
-  def create
-    @usuario = Usuario.new(usuario_params)
+def create
+  @usuario = Usuario.new(usuario_params)
 
-    respond_to do |format|
-      if @usuario.save
-        format.html { redirect_to @usuario, notice: "Usuario was successfully created." }
-        format.json { render :show, status: :created, location: @usuario }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @usuario.errors, status: :unprocessable_entity }
+  respond_to do |format|
+    if @usuario.save
+      format.html do
+        redirect_to login_path, notice: "Cadastro realizado com sucesso! Faça o login."
       end
+      format.json { render :show, status: :created, location: @usuario }
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @usuario.errors, status: :unprocessable_entity }
     end
   end
+end
 
   # PATCH/PUT /usuarios/1 or /usuarios/1.json
   def update
@@ -64,7 +66,8 @@ class UsuariosController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def usuario_params
-      params.require(:usuario).permit(:nome, :email, :password_digest)
-    end
+   def usuario_params
+  params.require(:usuario).permit(:nome, :email, :password, :password_confirmation)
+   end
+
 end

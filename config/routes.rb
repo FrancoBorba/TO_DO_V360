@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  resources :usuarios
+    # Rotas de login e logout
+  get    "/login",  to: "sessions#new"
+  post   "/login",  to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
+  # Apenas cadastro (new e create)
+  resources :usuarios, only: [:new, :create]
   # Permite criar rotas aninhadas como get/lists/1/itens 
   # ou seja listar os itens da lista de id 1
   # A alteracao deve ser feita tambem no controller
@@ -15,11 +18,8 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Define a rota principal para a de criacao de listas com
-   root "usuarios#index"
+  # Pagina principal: redireciona para o login
+  root "sessions#new" 
 
-  get "/login", to: "sessions#new"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
 
 end
