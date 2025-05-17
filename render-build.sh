@@ -1,16 +1,14 @@
 #!/bin/bash
 set -o errexit
 
-# 1. Encerra conexões existentes
-rails db -e production <<EOF
-  UPDATE pg_database SET datallowconn = 'false' WHERE datname = 'todo_v360_vf6j';
-  SELECT pg_terminate_backend(pg_stat_activity.pid)
-  FROM pg_stat_activity
-  WHERE pg_stat_activity.datname = 'todo_v360_vf6j';
-EOF
+# Carrega o ambiente Ruby
+source /opt/render/.bashrc
 
-# 2. Recria o banco
-rails db:drop db:create db:migrate
+# Instala dependências
+bundle install --path vendor/bundle
 
-# 3. Compila assets
-rails assets:precompile
+# Configura o banco (podemos resetar completamente)
+bundle exec rails db:drop db:create db:migrate db:seed
+
+# Compila assets
+bundle exec rails assets:precompile
