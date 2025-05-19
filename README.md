@@ -4,9 +4,9 @@ Projeto desenvolvido como parte de um teste técnico. A aplicação permite que 
 
 ## 🚀 Tecnologias
 
-- Ruby on Rails 7
+- Ruby 3.4.3
+- Rails 7.1.5.1
 - PostgreSQL
-- Devise (opcional para autenticação)
 - HTML, CSS (inline e customizado)
 
 ## 📸 Funcionalidades
@@ -17,40 +17,43 @@ Projeto desenvolvido como parte de um teste técnico. A aplicação permite que 
 - Validação de autenticação com feedback visual
 - Interface limpa e responsiva
 
-## 🧪 Testando localmente
 
-### Pré-requisitos
+## 📖 Relato sobre o Projeto
 
-- Ruby 3.x instalado
-- Rails 7.x instalado
-- PostgreSQL instalado e rodando
-- Git
+### 🚧 Dificuldades enfrentadas
+- Controlar a persistência dos dados usando Active Record e garantir que as validações funcionem para evitar dados incorretos.
 
-### Passos para rodar:
+- Aprender a criar interfaces limpas e reutilizáveis usando views, helpers e partials.
 
-```bash
-# Clone o projeto
-git clone https://github.com/seuusuario/v360-tarefas.git
-cd v360-tarefas
+- Aprender a usar as ferramentas do Rails juntas, como rotas, controllers, views, models e migrations, para construir uma aplicação funcional.
 
-# Instale as dependências
-bundle install
+No começo, juntar todos esses conceitos foi um desafio, mas com o tempo ficou mais claro como o Rails facilita o desenvolvimento ao integrar essas partes.
 
-# Crie o banco de dados e rode as migrations
-rails db:create
-rails db:migrate
 
-# Inicie o servidor
-rails server
-Acesse em: http://localhost:3000
+### 🎓 O que aprendi
 
-🌐 Versão Online
-Você pode testar a aplicação pela versão em nuvem no Railway
+- Manipular arquivos em Ruby de forma eficaz.
+- Criar uma aplicação completa utilizando Ruby on Rails, mesmo com recursos que ainda não dominava completamente.
+- Utilizar recursos modernos do **Hotwire** no Rails, como `turbo_frames` e `turbo_streams`, para criar interfaces reativas sem depender de JavaScript.
+- Trabalhar com `partials` e helpers para manter as views organizadas e reutilizáveis.
+- Integrar ações assíncronas utilizando `Turbo`, proporcionando uma experiência fluida ao usuário.
+
+## 🌐 Projeto em Produção
+Você pode testar o projeto direto na nuvem, sem instalar nada:
+
+Como a aplicação está na nuvem pode demorar até 1 minuto para a conexão ser bem sucessida
 
 🔗 Acessar Aplicação Online (https://francotodov360.onrender.com/login)
 
-🧑‍💻 Desenvolvedor
-Franco Ribeiro Borba
-LinkedIn
-Estudante de Ciência da Computação - UESB
+## 🧠 Conclusão
+Este projeto demonstra minha capacidade de:
+Criar aplicações funcionais em Ruby
+Estruturar código limpo, reutilizável e modular.
+Resolver problemas com foco em lógica, clareza e boas práticas.
+
+
+## 📩 Contato
+📧 Email: franco.borba14@gmail.com
+
+⭐ Se achou este projeto útil ou interessante, deixe uma estrela no repositório!
 
